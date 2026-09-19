@@ -1,0 +1,28 @@
+{
+  "obsVersion": "30.2.3",
+  "obsRuntimeSha256": "c5bf721258f6d8b2342ed39f04e65cdd3a07a9d1300654471d4be91d87fee65b",
+  "mediapipeVersion": "0.10.32",
+  "artifacts": [
+    {
+      "file": "obs.zip",
+      "url": "https://github.com/obsproject/obs-studio/archive/refs/tags/30.2.3.zip",
+      "sha256": "a75de0a777013ae5edca526e21b584176bf21606d4d5db23ba4b5a87cfde12e3"
+    },
+    {
+      "file": "mediapipe-source.zip",
+      "url": "https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v0.10.32.zip",
+      "sha256": "d57a614601e1298e9f08d32799464a92684655616be0effcd9eb362025aa4a57"
+    },
+    {
+      "file": "mediapipe.whl",
+      "metadataUrl": "https://pypi.org/pypi/mediapipe/0.10.32/json",
+      "wheel": "mediapipe-0.10.32-py3-none-win_amd64.whl",
+      "sha256": "438d98977a4e1b0f88070ad16537a328912f847ce9debf236da047b0b483cbfd"
+    },
+    {
+      "file": "face_landmarker.task",
+      "url": "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task",
+      "sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff"
+    }
+  ]
+}

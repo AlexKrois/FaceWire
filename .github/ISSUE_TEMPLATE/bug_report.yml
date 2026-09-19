@@ -1,0 +1,29 @@
+name: Bug report
+description: Report a problem with Cam Outlines
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Cam Outlines version
+      placeholder: 0.2.0
+    validations:
+      required: true
+  - type: input
+    id: obs
+    attributes:
+      label: OBS version and installation type
+      placeholder: OBS 32.2.2, Steam, Windows 11 x64
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Describe what you expected and what happened.
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Relevant log excerpts or screenshots
+      description: Include relevant Cam Outlines errors; remove private paths and images you do not want to share.

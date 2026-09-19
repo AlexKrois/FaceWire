@@ -1,0 +1,12 @@
+.deps/
+build/
+dist/
+__pycache__/
+*.user
+.vs/
+.idea/
+.env
+.env.*
+*.log
+*.pdb
+CMakeUserPresets.json
