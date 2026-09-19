@@ -31,10 +31,15 @@ if ($LASTEXITCODE) { throw 'CMake configuration failed.' }
 if ($LASTEXITCODE) { throw 'Build failed.' }
 & $ctest --test-dir "$root/build/native" -C Release --output-on-failure
 if ($LASTEXITCODE) { throw 'Tests failed.' }
-& $cmake --install "$root/build/native" --config Release --prefix "$root/dist"
+$stage = [IO.Path]::GetFullPath((Join-Path $root 'dist/runtime'))
+# Delete only this dedicated generated staging directory, never a caller-provided path.
+if ($stage -ne [IO.Path]::GetFullPath("$root/dist/runtime")) { throw 'Unexpected staging path.' }
+if (Test-Path -LiteralPath $stage) { Remove-Item -LiteralPath $stage -Recurse -Force }
+& $cmake --install "$root/build/native" --config Release --prefix $stage
 if ($LASTEXITCODE) { throw 'Packaging failed.' }
 $package = "$root/dist/camoutlines-$version-windows-x64.zip"
-Compress-Archive -Path "$root/dist/camoutlines" -DestinationPath $package -Force
+Compress-Archive -Path "$stage/obs-plugins", "$stage/data" -DestinationPath $package -Force
+& "$PSScriptRoot/test-package.ps1" -Package $package
 $checksum = (Get-FileHash $package -Algorithm SHA256).Hash.ToLower()
 "$checksum  $(Split-Path $package -Leaf)" | Set-Content "$package.sha256" -Encoding ascii
 $commit = & git -C $root rev-parse --verify HEAD 2>$null

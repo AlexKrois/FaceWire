@@ -2,6 +2,8 @@
 
 `scripts/build.ps1` runs the dependency-free geometry tests and a native MediaPipe
 smoke test (model initialization, video inference on blank frames, cleanup).
+It also validates the exact eight-file release ZIP layout with
+`scripts/test-package.ps1`; source and build files must not appear in that ZIP.
 
 The optional integration test uses the installed OBS 30.2.3 runtime and D3D11
 in a separate console process. It does not open the OBS application, access a

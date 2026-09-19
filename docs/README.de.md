@@ -9,14 +9,26 @@ einstellbar. Kein zusätzlicher Kamerazugriff, Python-Prozess oder Browser nöti
 ## Installation
 
 1. OBS schließen.
-2. Den Ordner `camoutlines` aus `dist/camoutlines-0.2.0-windows-x64.zip` nach
-   `C:\ProgramData\obs-studio\plugins\` entpacken.
-3. Prüfen, dass dort `camoutlines\bin\64bit\camoutlines.dll` und
-   `camoutlines\data\face_landmarker.task` liegen.
+2. **camoutlines-0.2.1-windows-x64.zip** unter
+   [Releases](https://github.com/AlexKrois/obs-camoutlines/releases/tag/v0.2.1) herunterladen.
+   Nicht das automatisch von GitHub angebotene „Source code“-ZIP verwenden.
+3. Die beiden ZIP-Ordner **obs-plugins** und **data** direkt nach
+   `C:\Program Files (x86)\Steam\steamapps\common\OBS Studio\` entpacken.
+   Ordner zusammenführen und vorhandene Cam-Outlines-Dateien beim Update ersetzen.
+   Die Plugin-DLL liegt anschließend unter
+   `C:\Program Files (x86)\Steam\steamapps\common\OBS Studio\obs-plugins\64bit\camoutlines.dll`.
+   Die Daten liegen unter `OBS Studio\data\obs-plugins\camoutlines\`.
 4. OBS starten. Kameraquelle → **Filter** → **Effektfilter** → **+** →
    **Cam Outlines — Gesichtslandmarks**.
 5. Gewünschte Gesichtspartien auswählen. Mit 640 Pixel Tracking-Auflösung,
    30 Tracking-FPS und 2,5 Pixel Linienstärke beginnen.
+
+Bei einer normalen OBS-Installation statt des Steam-Pfads deren Stammordner
+verwenden, üblicherweise `C:\Program Files\obs-studio`.
+Das ganze ZIP gehört **nicht** nach `obs-plugins\64bit`: Dort liegt nur die
+Plugin-DLL. Die mitgelieferten Daten müssen ihre separate Ordnerstruktur behalten.
+Das Installations-ZIP enthält nur Laufzeitdateien, Übersetzungen und Lizenzhinweise.
+Quellcode und Entwicklerdateien sind separat im Repository verfügbar.
 
 ### Neue Optionen in 0.2.0
 
@@ -44,7 +56,7 @@ Alternativ im Projekt nach dem Build ausführen, während OBS geschlossen ist:
 
 Das Skript sichert vorhandene Plugin-Dateien und installiert mit Prüfsummenprüfung.
 Je nach Ordnerrechten ist eine PowerShell mit Administratorrechten erforderlich.
-Bei manueller Installation gilt diese andere Ordnerstruktur:
+Das ZIP und das Skript verwenden dieselbe Ordnerstruktur:
 
 ```text
 OBS Studio/
@@ -55,8 +67,7 @@ OBS Studio/
   data/obs-plugins/camoutlines/locale/en-US.ini
 ```
 
-Hier nur den **Inhalt** des Paketordners `data` in den OBS-Datenordner kopieren.
-Keinen zusätzlichen `data`-Unterordner anlegen. Werden `FilterName`, `Help` oder
+Keinen zusätzlichen `camoutlines`- oder `data`-Unterordner anlegen. Werden `FilterName`, `Help` oder
 `Error: Cannot load MediaPipe DLL (Windows error 87)` angezeigt, zuerst diese
 Ordnerstruktur prüfen: In diesem Fall findet OBS die Plugin-Daten nicht.
 

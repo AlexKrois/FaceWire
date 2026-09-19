@@ -9,8 +9,8 @@ Repository: https://github.com/AlexKrois/obs-camoutlines
 5. Tag the exact commit with a version matching CMake:
 
 ```sh
-git tag -a v0.2.0 -m "Cam Outlines 0.2.0"
-git push origin v0.2.0
+git tag -a v0.2.1 -m "Cam Outlines 0.2.1"
+git push origin v0.2.1
 ```
 
 The Windows workflow builds from the tagged source, checks that the tag matches
@@ -18,6 +18,8 @@ the CMake version, and creates a draft prerelease. The release job has write acc
 normal builds and pull requests have read-only repository permissions.
 
 Review the draft's notes and assets, then publish it from GitHub Releases.
+The Windows ZIP contains only the two installation directories and required
+license notices. GitHub provides source archives separately at the same tag.
 No tag or public binary release is created by a local build. Do not move an
 existing published tag: fix issues in a new version.
 

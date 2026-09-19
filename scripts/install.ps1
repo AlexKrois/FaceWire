@@ -1,7 +1,7 @@
 param([Parameter(Mandatory = $true)][string]$ObsRoot)
 $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot -Parent
-$package = Join-Path $root 'dist/camoutlines'
+$package = Join-Path $root 'dist/runtime'
 $target = (Resolve-Path -LiteralPath $ObsRoot).Path
 if (!(Test-Path -LiteralPath "$target/bin/64bit/obs64.exe")) { throw 'ObsRoot must be an OBS installation directory.' }
 if (Get-Process obs64 -ErrorAction SilentlyContinue) { throw 'Close OBS before installing Cam Outlines.' }
@@ -16,6 +16,7 @@ $files = @(
     @{ Source = 'THIRD_PARTY.md'; Target = 'data/obs-plugins/camoutlines/THIRD_PARTY.md' }
 )
 foreach ($file in $files) {
+    $file.Source = $file.Target
     if (!(Test-Path -LiteralPath (Join-Path $package $file.Source))) { throw "Package file missing: $($file.Source)" }
 }
 $backup = Join-Path $root ('.deps/install-backups/' + (Get-Date -Format 'yyyyMMdd-HHmmss'))

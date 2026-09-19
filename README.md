@@ -20,17 +20,25 @@ with OBS 30.2.3 and 32.2.2 (Steam). Other versions/platforms are not yet validat
 
 ## Install
 
-1. Close OBS and download the Windows x64 ZIP from this repository's Releases page.
-2. Extract its `camoutlines` folder into `C:\ProgramData\obs-studio\plugins\`.
-3. Confirm these files exist:
+1. Close OBS and download **camoutlines-0.2.1-windows-x64.zip** from
+   [Releases](https://github.com/AlexKrois/obs-camoutlines/releases/tag/v0.2.1).
+   Choose this asset, not GitHub's automatically generated source-code ZIP.
+2. Open your OBS installation folder. For Steam the default is:
+   `C:\Program Files (x86)\Steam\steamapps\common\OBS Studio`.
+3. Extract **both** folders from the ZIP (`obs-plugins` and `data`) directly into
+   that OBS folder. Merge folders and replace the existing Cam Outlines files when updating.
+   The resulting layout is:
 
 ```text
-C:\ProgramData\obs-studio\plugins\camoutlines\
-  bin\64bit\camoutlines.dll
-  data\libmediapipe.dll
-  data\face_landmarker.task
-  data\locale\en-US.ini
-  data\locale\de-DE.ini
+C:\Program Files (x86)\Steam\steamapps\common\OBS Studio\
+  obs-plugins\64bit\camoutlines.dll
+  data\obs-plugins\camoutlines\libmediapipe.dll
+  data\obs-plugins\camoutlines\face_landmarker.task
+  data\obs-plugins\camoutlines\locale\en-US.ini
+  data\obs-plugins\camoutlines\locale\de-DE.ini
+  data\obs-plugins\camoutlines\LICENSE
+  data\obs-plugins\camoutlines\THIRD_PARTY.md
+  data\obs-plugins\camoutlines\licenses\MediaPipe-LICENSE.txt
 ```
 
 4. Start OBS. Open your video source's **Filters → Effect Filters → + →
@@ -41,6 +49,9 @@ C:\ProgramData\obs-studio\plugins\camoutlines\
 The full outline, iris and mesh are opt-in. Upgrade the existing filter rather
 than adding another instance; two active instances draw two overlays.
 The Microsoft Visual C++ x64 runtime must be installed (normally present with OBS).
+For standalone OBS, use its installation folder (usually `C:\Program Files\obs-studio`)
+instead. Do not extract the whole ZIP into `obs-plugins\64bit`: only the plugin DLL
+belongs there. Its supporting files must retain their separate `data` paths.
 
 ### Direct installation, including Steam
 
@@ -51,10 +62,8 @@ From a built checkout, while OBS is closed:
 ```
 
 The installer backs up replaced files and checks their hashes. Administrator
-rights may be needed for the destination. For manual installation into an OBS
-folder, copy the plugin DLL to `obs-plugins/64bit/` and the **contents** of the
-package's `data` folder to `data/obs-plugins/camoutlines/`. Do not add another
-nested `data` directory.
+rights may be needed for the destination. It installs the same two-folder layout
+as the release ZIP. No additional `camoutlines` or `data` wrapper folder is needed.
 
 If settings show `FilterName` or `Help`, or the runtime/model cannot be found,
 check the data layout. Consult the OBS log for `[camoutlines]` errors. After
@@ -82,7 +91,9 @@ topology or prepare an optional test image.
 
 The build runs geometry and native inference tests and produces a Windows ZIP,
 SHA-256 checksum and `build-info.json` in `dist/`. The ZIP includes the plugin,
-model, native runtime, licenses and project source. It does not include OBS.
+model, native runtime, translations and license notices only. Source code and
+developer files remain in this repository and GitHub's separate source-code archive.
+The ZIP's exact eight-file layout is checked by `scripts/test-package.ps1`.
 
 See [tests/README.md](tests/README.md) for the additional D3D11 integration test
 and [CONTRIBUTING.md](CONTRIBUTING.md) for development guidance.
