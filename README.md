@@ -6,6 +6,12 @@ Landmarker; no Python process or separate camera connection is needed at runtime
 
 [Deutsch](docs/README.de.md) · [Releases](https://github.com/AlexKrois/obs-camoutlines/releases) · [Changelog](CHANGELOG.md)
 
+
+
+https://github.com/user-attachments/assets/13bfda0f-3258-4234-87d2-945895f82d33
+
+
+
 ## Features
 
 - Independently selectable eyes, eyebrows, nose, mouth and jaw.
