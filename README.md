@@ -115,18 +115,3 @@ and [CONTRIBUTING.md](CONTRIBUTING.md) for development guidance.
 - Live camera motion, transforms, source-resolution changes and long sessions
   require further testing across systems.
 
-## Releases
-
-GitHub Actions builds and tests pull requests and branch changes. Pushing a tag
-matching the CMake version, for example `v0.2.0`, creates a **draft prerelease**
-with the ZIP, checksum and build information. A maintainer reviews and publishes
-that draft. See [the release guide](docs/RELEASING.md).
-
-## License and credits
-
-Cam Outlines is licensed under **GPL-3.0-or-later**. The generated MediaPipe mesh
-connection table is Apache-2.0. See [LICENSE](LICENSE) and
-[THIRD_PARTY.md](THIRD_PARTY.md) for dependencies, model provenance and notices.
-
-Inspired by [norihiro/obs-face-tracker](https://github.com/norihiro/obs-face-tracker).
-This is an independent implementation and does not require that plugin.
